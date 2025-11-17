@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Paprika",
+    "unitString": ""
+  },
+  {
+    "name": "Knoblauch",
+    "unitString": "",
+    "fresh": false
+  },
+  {
+    "name": "Nudeln",
+    "unitString": "g",
+    "amount": 500.0,
+    "fresh" : false
+  }
+]

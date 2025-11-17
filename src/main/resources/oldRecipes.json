@@ -1,0 +1,62 @@
+{
+    "recipes" : [
+        {
+            "name" : "Asia Nudeln",
+            "ingredients" : [
+                {
+                    "name" : "Paprika",
+                    "amount" : "2",
+                    "fresh": true
+                },
+                {
+                    "name" : "Nudeln",
+                    "unit" : "g",
+                    "amount" : "500",
+                    "fresh": false
+                },
+                {
+                    "name" : "Knoblauch",
+                    "amount" : "2",
+                    "fresh": false
+                }
+            ],
+            "prep" : [
+                "Tray 1: __Paprika__ in Streifen",
+                "Tray 2: __Knoblauch__ reiben"
+            ],
+            "process" : [
+                "__Nudeln__ kochen",
+                "__Knoblauch__ anbraten",
+                "__Paprika__ hinzufügen"
+            ],
+            "notes" : [
+                "Test Note"
+            ]
+        },
+        {
+            "name" : "Veggis",
+            "ingredients" : [
+                {
+                    "name" : "Paprika",
+                    "amount" : "1",
+                    "fresh": true
+                },
+                {
+                    "name" : "Knoblauch",
+                    "unit" : "Zehen",
+                    "amount" : "2",
+                    "fresh": false
+                }
+            ],
+            "prep" : [
+                "Tray 1: Alles aufs Blech"
+            ],
+            "process" : [
+                "Bei 180 Grad 20 min backen"
+            ],
+            "notes" : [
+                "Fuck yeah its vegan"
+            ]
+        }
+    ]
+}
