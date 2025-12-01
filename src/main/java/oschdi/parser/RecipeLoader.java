@@ -6,9 +6,7 @@ import oschdi.database.HaushaltDatabase;
 import oschdi.model.Ingredient;
 import oschdi.model.Item;
 import oschdi.model.Recipe;
-import oschdi.util.FileUtil;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -24,7 +22,10 @@ public class RecipeLoader {
     public Recipe[] loadRecipesFromFile(String path) throws IOException, RecipeException {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            InputStream inputStream = new FileInputStream(FileUtil.getResourcePath() + path);
+            InputStream inputStream = getClass().getResourceAsStream(path);
+            if (inputStream == null) {
+                throw new IOException(String.format("Resource %s not found!", path));
+            }
             return getRecipesFromMap(mapper.readValue(inputStream, Map.class));
         } catch (Exception e) {
             throw new IOException("Loading json file failed!");

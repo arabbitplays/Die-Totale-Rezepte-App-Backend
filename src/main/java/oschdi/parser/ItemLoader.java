@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import oschdi.database.HaushaltDatabase;
 import oschdi.model.Ingredient;
 import oschdi.model.Item;
-import oschdi.util.FileUtil;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -20,7 +18,10 @@ public class ItemLoader {
 
     public Item[] loadItemsFromFile(String path) throws IOException {
         try {
-            InputStream inputStream = new FileInputStream(FileUtil.getResourcePath() + path);
+            InputStream inputStream = getClass().getResourceAsStream(path);
+            if (inputStream == null) {
+                throw new IOException(String.format("Resource %s not found!", path));
+            }
             return convertJsonItemsToItems(mapper.readValue(inputStream, JsonItem[].class));
         } catch (Exception e) {
             throw new IOException(String.format("Loading items from file %s failed!", path));
