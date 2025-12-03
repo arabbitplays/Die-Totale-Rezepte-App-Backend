@@ -4,3 +4,16 @@ services:
     image: dtra-backend
     ports:
       - 8081:8081
+  mongodb:
+    image: mongo:7.0
+    container_name: dtra-mongodb
+    ports:
+      - "27017:27017"       # Expose MongoDB to the host
+    volumes:
+      - mongo-data:/data/db # Persist data on host
+    #environment:
+    #  MONGO_INITDB_ROOT_USERNAME: admin
+    #  MONGO_INITDB_ROOT_PASSWORD: secret
+
+volumes:
+  mongo-data:

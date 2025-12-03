@@ -17,8 +17,8 @@ import oschdi.shopping.ShoppingList;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        //HaushaltDatabase database = new MongoHaushaltDatabase();
-        HaushaltDatabase database = new JsonDatabase();
+        HaushaltDatabase database = new MongoHaushaltDatabase();
+        // HaushaltDatabase database = new JsonDatabase();
         RecipeController.setDatabase(database);
         ShoppingList shoppingList = new ShoppingList(database);
         ItemController.init(database, shoppingList);

@@ -33,10 +33,30 @@ public class MongoHaushaltDatabase implements HaushaltDatabase {
 
         MongoClient mongoClient = MongoClients.create(
                 MongoClientSettings.builder()
-                        .applyConnectionString(new ConnectionString("mongodb://localhost:27017"))
+                        .applyConnectionString(new ConnectionString("mongodb://mongodb:27017"))
                         .build());
 
-        MongoDatabase db = mongoClient.getDatabase("dietotalerezepteapp");
+        String dbName = "dietotalerezepteapp";
+        String[] collectionsToEnsure = {"rezepte", "items"};
+
+        MongoDatabase db = mongoClient.getDatabase(dbName);
+
+        MongoIterable<String> existingCollections = db.listCollectionNames();
+        for (String collName : collectionsToEnsure) {
+            boolean exists = false;
+            for (String existing : existingCollections) {
+                if (existing.equals(collName)) {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (!exists) {
+                db.createCollection(collName);
+                System.out.println("Created collection: " + collName);
+            }
+        }
+
         recipeCollection = db.getCollection("rezepte");
         itemCollection = db.getCollection("items");
     }
